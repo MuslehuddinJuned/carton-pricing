@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Carton Pricing</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Nunito|Raleway&display=swap" rel="stylesheet">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="Carton Pricing, Paper Consumption Calculation">
+  <meta name="description" content="Carton Measurement, Price and Paper Consumption Calculation">
+  <meta name="author" content="Muslehuddinjuned, Muslehuddin Juned, Musleh Uddin Juned, Muslehuddin, Juned">
+  <meta name="copyright"content="www.sustipe.com">
+  <meta name="designer" content="Musleh Uddin Juned">
+  <meta name="owner" content="Musleh Uddin Juned">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <style type="text/css">
+    body{
+      font-family: 'Raleway', sans-serif;
+    }
+    .pointer {cursor: pointer;}
+  </style>
+</head>
+<body>
+
+<div class="container my-3">
+    <div class="text-center my-3 border border-primary rounded">
+        <h2>Carton Measurement, Price and Paper Consumption Calculation</h2>
+    </div>
+<form>
+  <div class="form-group row px-3 pt-3">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+        <div class="input-group-text">Carton Type</div>
+      </div>
+    <select class="form-control" id="CartonType">
+      <option value="MC">Master Carton</option>
+      <option value="MCL">Master Carton (Lindex)</option>
+      <option value="MCD">Master Carton (DECATHLON)</option>
+      <option value="MCC">Master Carton (CASAMODA)</option>
+      <option value="BCH">Box Carton (HAV)</option>
+      <option value="HC">Hanger Carton</option>
+      <option value="CC">Cover/Cap</option>
+      <option value="TB">Top Bottom</option>
+      <option value="DV">Divider</option>
+    </select>
+  </div></div>
+  
+  <div class="row">
+  <div class="form-group col-md-4">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Length</div>
+        </div>
+    <input type="number" class="form-control" id="Length" value="0">
+  </div></div>
+  <div class="form-group col-md-4">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Width</div>
+        </div>
+    <input type="number" class="form-control" id="Width" value="0">
+  </div></div>
+  <div class="form-group col-md-4">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Height</div>
+        </div>
+    <input type="number" class="form-control" id="Height" value="0">
+  </div></div>
+  </div>
+  
+  <div class="row">
+  <div class="form-group col-md-6">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Price/sq. m</div>
+        </div>
+    <input type="number" class="form-control" id="Price" value="0">
+  </div></div>
+  <div class="form-group col-md-6">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Unit</div>
+        </div>
+    <select class="form-control" id="Unit" onchange="UnitChange()">
+      <option value="10000">CM</option>
+      <option value="1000000">MM</option>
+      <option value="1550.0031">Inch</option>
+    </select>
+  </div></div>
+  </div>
+  
+<div class="row">
+  <div class="form-group col-md-3 col-ms-12">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">L1</div>
+        </div>
+    <input type="number" class="form-control" id="L1" value="0">
+  </div></div>
+  <div class="form-group col-md-2 col-ms-12">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">BM</div>
+        </div>
+    <input type="number" class="form-control" id="BM" value="0">
+  </div></div>
+  <div class="form-group col-md-2 col-ms-12">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">BL</div>
+        </div>
+    <input type="number" class="form-control" id="BL" value="0">
+  </div></div>
+  <div class="form-group col-md-2 col-ms-12">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">CM</div>
+        </div>
+    <input type="number" class="form-control" id="CM" value="0">
+  </div></div>
+  <div class="form-group col-md-3 col-ms-12">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">CL</div>
+        </div>
+    <input type="number" class="form-control" id="CL" value="0">
+  </div></div>
+</div>
+
+<!--<button class="btn btn-primary" onclick="CartonCalculate()">Calculate</button>-->
+
+<div class="accordion" id="accordionExample">
+      <h5 class="p-2 pointer" style="text-decoration: none;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Others Parameter
+      </h5>
+    
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="Wastage_W">Wastage (W)</label>
+            <input type="number" class="form-control" id="Wastage_W" value="4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="Wastage_L">Wastage (L)</label>
+            <input type="number" class="form-control" id="Wastage_L" value="6">
+          </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</form>
+<div class="container">
+<button class="btn btn-primary mb-3" onclick="CartonCalculate()">Calculate</button><br>
+<!--<input type="text" class="form-control bg-light" id="Output" placeholder="1" disabled>-->
+
+<form>
+    <div class="row">
+        <div class="form-group col-md-6">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Squere Meter</div>
+        </div>
+            <input type="text" class="form-control" id="SQM">
+        </div></div>
+        <div class="form-group col-md-6">
+              <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">Price</div>
+        </div>
+            <input type="text" class="form-control" id="PriceCal">
+        </div></div>
+    </div>
+    <div class="row">
+      <div class="form-group  col-md-3 col-ms-12">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">L1 (kg)</div>
+        </div>
+        <input type="text" class="form-control" id="L1Cal">
+      </div></div>
+      <div class="form-group  col-md-2 col-ms-12">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">BM (kg)</div>
+        </div>
+        <input type="text" class="form-control" id="BMCal">
+      </div></div>
+      <div class="form-group  col-md-2 col-ms-12">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">BL (kg)</div>
+        </div>
+        <input type="text" class="form-control" id="BLCal">
+      </div></div>
+      <div class="form-group  col-md-2 col-ms-12">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">CM (kg)</div>
+        </div>
+        <input type="text" class="form-control" id="CMCal">
+      </div></div>
+      <div class="form-group  col-md-3 col-ms-12">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">CL (kg)</div>
+        </div>
+        <input type="text" class="form-control" id="CLCal">
+      </div></div>
+    </div>
+    
+    <div class="row">
+      <div class="form-group col-md-6">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">L1+CL</div>
+        </div>
+        <input type="text" class="form-control" id="L_Sum">
+      </div></div>
+      <div class="form-group col-md-6">
+          <div class="input-group mb-2">
+        <div class="input-group-prepend">
+         <div class="input-group-text">BM+BL+CM</div>
+        </div>
+        <input type="text" class="form-control" id="M_Sum">
+      </div></div>
+    </div>
+</form>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="cartonpricing.js"></script>
+</body>
+</html>
